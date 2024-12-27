@@ -1,0 +1,24 @@
+.plus_wrapper {
+  position: absolute;
+  right: 240px;
+  top: 24px;
+}
+
+.plus_wrapper:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1919px) {
+  .plus_wrapper {
+    right: 30px;
+    top: 24px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 1023px) {
+    .plus_wrapper {
+      position: fixed;
+      right: 16px;
+      top: 90vh;
+  }
+}

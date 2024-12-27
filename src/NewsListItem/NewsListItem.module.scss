@@ -1,0 +1,53 @@
+.newsCardWrapper {
+  width: 464px;
+  height: 563px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+}
+
+.image {
+  width: 464px;
+  height: 379px;
+  border-radius: 32px;
+}
+
+.date_wrapper {
+  margin-top: 16px;
+  padding: 8px 12px;
+  border-radius: 25px;
+  background: var(--black-05);
+  color: var(--black-80);
+  font: var(--text_2);
+}
+
+.card_title {
+  margin-top: 16px;
+  font: var(--text_1);
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1919px) {
+  .newsCardWrapper {
+    width: 468px;
+    height: 543px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 1023px) {
+  .newsCardWrapper {
+    width: 343px;
+    height: 502px;
+  }
+
+  .card_title {
+
+  }
+}
+

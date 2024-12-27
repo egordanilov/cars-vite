@@ -1,0 +1,38 @@
+:root {
+
+
+  --font-family-main:  'Inter';
+
+  --font-size-heading_1: 64px;
+  --font-size-heading_2: 32px;
+  --font-size-heading_3: 24px;
+  --font-size-text_1: 24px;
+  --font-size-text_2: 20px;
+  --font-size-text_3: 18px;
+  --font-size-text_4: 16px;
+
+  --font-weight-heading_1: 700;
+  --font-weight-heading_2: 700;
+  --font-weight-heading_3: 700;
+  --font-weight-text_1: 500;
+  --font-weight-text_2: 400;
+  --font-weight-text_3: 400;
+  --font-weight-text_4: 400;
+
+  --line-height-heading_1: 100%;
+  --line-height-heading_2: 100%;
+  --line-height-heading_3: 100%;
+  --line-height-text_1: 130%;
+  --line-height-text_2: 130%;
+  --line-height-text_3: 130%;
+  --line-height-text_4: 130%;
+
+  --heading_1: var(--font-weight-heading_1) var(--font-size-heading_1)/var(--line-height-heading_1) var(--font-family-main);
+  --heading_2: var(--font-weight-heading_2) var(--font-size-heading_2)/var(--line-height-heading_2) var(--font-family-main);
+  --heading_3: var(--font-weight-heading_3) var(--font-size-heading_3)/var(--line-height-heading_3) var(--font-family-main);
+  --text_1: var(--font-weight-text_1) var(--font-size-text_1)/var(--line-height-text_1) var(--font-family-main);
+  --text_2: var(--font-weight-text_2) var(--font-size-text_2)/var(--line-height-text_2) var(--font-family-main);
+  --text_3: var(--font-weight-text_3) var(--font-size-text_3)/var(--line-height-text_3) var(--font-family-main);
+  --text_4: var(--font-weight-text_4) var(--font-size-text_4)/var(--line-height-text_4) var(--font-family-main);
+}
+
