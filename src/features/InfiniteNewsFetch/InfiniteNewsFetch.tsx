@@ -1,19 +1,12 @@
 import  { useState, useEffect, useCallback } from 'react';
 import classnames from './InfiniteNewsFetch.module.scss';
-import {NewsListItem} from "../../shared";
+import {NewsListItem} from "@/shared";
+// @ts-ignore
+import type {IArticleFromApi} from "@/entities";
 
-interface IItem {
-   id: number,
-    title: string,
-    description: string,
-    publishedDate: string,
-    url: string,
-    fullUrl: string,
-    titleImageUrl: string,
-    categoryType: string
-}
+
 export const InfiniteNewsFetch: React.FC = () => {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<IArticleFromApi[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
@@ -62,7 +55,7 @@ export const InfiniteNewsFetch: React.FC = () => {
 
     return (
         <div className={classnames.infiniteNewsWrapper}>
-            {data.map((item: IItem) => (
+            {data.map((item: IArticleFromApi) => (
                 <NewsListItem key={item.id} title={item.title} titleImageUrl={item.titleImageUrl} publishedDate={item.publishedDate} url={item.url} />
             ))}
             {loading && <p>Loading...</p>}

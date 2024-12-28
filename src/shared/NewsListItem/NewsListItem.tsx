@@ -1,6 +1,6 @@
 import cn from './NewsListItem.module.scss';
 import {Link} from "react-router";
-import {FormattedDate} from "../index";
+import {FormattedDate} from "@/shared";
 
 interface NewsListItemProps {
     title: string;
