@@ -1,6 +1,8 @@
 import classnames from "./AddArticle.module.scss";
 import {useRef, useState} from "react";
-import {getCurrentDateTime} from "../../shared";
+import {getCurrentDateTime} from "@/shared";
+// @ts-ignore
+import type {IArticleFromSubmit} from "@/entities";
 
 
 export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
@@ -39,7 +41,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
         setPreviewUrl(undefined);
     }
 
-    function saveObject(data: any) {
+    function saveObject(data: IArticleFromSubmit) {
         // Retrieve the existing array from localStorage
         let storedData = localStorage.getItem('myDataArray');
         let dataArray = storedData ? JSON.parse(storedData) : [];

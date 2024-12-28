@@ -2,8 +2,11 @@ import  { Suspense } from 'react';
 import { Route, Routes} from 'react-router';
 import './styles/index.scss';
 import {useTheme} from "./theme/useTheme";
-import {ArticlePageAsync, MainPageAsync} from "../pages/";
-import {Header} from "../shared";
+
+import {Header} from "@/shared";
+// @ts-ignore
+import {MainPageAsync, ArticlePageAsync} from '@/pages';
+
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();

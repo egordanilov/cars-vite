@@ -1,8 +1,10 @@
 import {useEffect, useState} from 'react';
 import { useParams } from "react-router";
-import HTMLRenderer from "../../shared/HTMLRenderer/HTMLRenderer";
-import {FormattedDate} from "../../shared/FormattedDate/FormattedDate";
 import cn from './ArticlePage.module.scss';
+import {FormattedDate, HTMLRenderer} from "@/shared";
+// @ts-ignore
+import {fetchArticle} from "@/entities";
+
 
 const ArticlePage = () => {
 
@@ -12,28 +14,19 @@ const ArticlePage = () => {
 
     const { segment, newsUrl } = useParams<{ segment: string, newsUrl: string }>();
     const [data, setData] = useState<{ title: string; publishedDate: string; titleImageUrl: string; text: string } | null>(null);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + filePath;
 
-
     useEffect(() => {
-
-
-
-
-        fetch(fullFetchUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json(); // or response.text() if you expect a plain text response
-            })
-            .then(data => {
+        fetchArticle(fullFetchUrl)
+            .then((data: { title: string; publishedDate: string; titleImageUrl: string; text: string }) => {
                 setData(data);
             })
-            .catch(error => {
-                setError(error.toString());
+            .catch((error: unknown) => {
+                if (error) {
+                    setError((error as Error).toString());
+                }
             });
     }, [segment, newsUrl]);
 
