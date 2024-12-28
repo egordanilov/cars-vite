@@ -1,47 +1,59 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import cn from './ArticlePage.module.scss';
-import {FormattedDate, HTMLRenderer} from "@/shared";
+import cn from "./ArticlePage.module.scss";
+import { FormattedDate, HTMLRenderer } from "@/shared";
+// @ts-ignore
+import type { IArticleData} from "@/entities";
 // @ts-ignore
 import {fetchArticle} from "@/entities";
 
 
 const ArticlePage = () => {
-
-    let params = useParams();
-    let urlPath = params["*"];
-
-    const { segment, newsUrl } = useParams<{ segment: string, newsUrl: string }>();
-    const [data, setData] = useState<{ title: string; publishedDate: string; titleImageUrl: string; text: string } | null>(null);
+    const { "*": urlPath } = useParams<{ "*": string }>();
+    const [data, setData] = useState<IArticleData | null>(null);
     const [error, setError] = useState<string | null>(null);
-
-    let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + urlPath;
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        const fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/${urlPath}`;
+        setLoading(true);
+        setError(null);
+
         fetchArticle(fullFetchUrl)
-            .then((data: { title: string; publishedDate: string; titleImageUrl: string; text: string }) => {
-                setData(data);
+            .then((fetchedData: IArticleData) => {
+                setData(fetchedData);
             })
             .catch((error: unknown) => {
-                if (error) {
-                    setError((error as Error).toString());
-                }
+                console.error("Fetching error:", error); // Log the error for debugging
+                setError("An error occurred while loading the article. Please try again later.");
+            })
+            .finally(() => {
+                setLoading(false);
             });
-    }, [segment, newsUrl]);
+    }, [urlPath]);
 
-    return <div className={cn.wrapper}>
-        {error && <p>Error: {error}</p>}
-        {data ? (
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
+
+    if (!data) {
+        return <p>No article data available.</p>;
+    }
+
+    return (
+        <div className={cn.wrapper}>
             <div className="article-page-wrapper">
                 <h1>{data.title}</h1>
                 <FormattedDate date={data.publishedDate} />
                 <img className={cn.image} src={data.titleImageUrl} alt={data.title} />
                 <HTMLRenderer rawHTML={data.text} />
             </div>
-        ) : (
-            <p>Loading...</p>
-        )}
-    </div>
+        </div>
+    );
 };
 
 export default ArticlePage;

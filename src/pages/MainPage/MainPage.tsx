@@ -1,5 +1,6 @@
 import {useState} from 'react';
 
+// @ts-ignore
 import {AddArticle, InfiniteNewsFetch} from "@/features";
 import {Modal, OpenModalButton} from "@/shared";
 
