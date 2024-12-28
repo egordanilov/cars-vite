@@ -1,6 +1,6 @@
-import classnames from './OpenModal.module.scss';
+import classnames from './OpenModalButton.module.scss';
 
-export const OpenModal = ({openModal}: {openModal: () => void}) => {
+export const OpenModalButton = ({openModal}: {openModal: () => void}) => {
     return (
         <div className={classnames.plus_wrapper} role="button" tabIndex={-1} onClick={openModal}>
             <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">

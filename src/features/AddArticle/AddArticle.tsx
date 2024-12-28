@@ -1,6 +1,7 @@
 import classnames from "./AddArticle.module.scss";
 import {useRef, useState} from "react";
-import {getCurrentDateTime} from "../../shared/utils/getCurrentDateTime";
+import {getCurrentDateTime} from "../../shared";
+
 
 export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
     const [articleTitle, setArticleTitle] = useState<string>("");

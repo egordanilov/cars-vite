@@ -12,10 +12,8 @@ export function Header() {
                             fill="#202020"/>
                     </svg>
                 </Link>
-
             </div>
             <div className={classnames.header_heading}>ПОРТАЛ НОВОСТЕЙ</div>
-
         </header>
     )
 }

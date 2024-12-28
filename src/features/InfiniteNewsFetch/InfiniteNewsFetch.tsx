@@ -1,6 +1,6 @@
 import  { useState, useEffect, useCallback } from 'react';
-import NewsListItem from "../../pages/MainPage/ui/NewsListItem/NewsListItem";
 import classnames from './InfiniteNewsFetch.module.scss';
+import {NewsListItem} from "../../shared";
 
 interface IItem {
    id: number,
@@ -12,7 +12,7 @@ interface IItem {
     titleImageUrl: string,
     categoryType: string
 }
-const InfiniteScrollComponent: React.FC = () => {
+export const InfiniteNewsFetch: React.FC = () => {
     const [data, setData] = useState<any[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -69,5 +69,3 @@ const InfiniteScrollComponent: React.FC = () => {
         </div>
     );
 };
-
-export default InfiniteScrollComponent;

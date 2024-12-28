@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
-import Modal from "../../shared/Modal/Modal";
-import {OpenModal} from "../../features/InfiniteNewsFetch/OpenModal/OpenModal";
-import InfiniteNewsFetch from "../../features/InfiniteNewsFetch/InfiniteNewsFetch";
-import {AddArticle} from "../../features/AddArticle/AddArticle";
+import {AddArticle, InfiniteNewsFetch} from "../../features";
+import {Modal, OpenModalButton} from "../../shared";
 
 const MainPage = () => {
     const [showModal, setShowModal] = useState(false);
@@ -18,7 +16,7 @@ const MainPage = () => {
 
     return (
         <section className="main-page-wrapper">
-            <OpenModal openModal={handleOpenModal} />
+            <OpenModalButton openModal={handleOpenModal} />
             <h1>Автомобильные новости</h1>
             <Modal show={showModal} onClose={handleCloseModal}>
                 <AddArticle closeModal={handleCloseModal} />

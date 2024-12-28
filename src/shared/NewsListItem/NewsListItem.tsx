@@ -1,8 +1,6 @@
 import cn from './NewsListItem.module.scss';
-import {dateFormatter} from "../../../../shared/utils/dateFormatter";
 import {Link} from "react-router";
-import {trimString} from "./utils/trimUrlString";
-import {FormattedDate} from "../../../../shared/FormattedDate/FormattedDate";
+import {FormattedDate} from "../index";
 
 interface NewsListItemProps {
     title: string;
@@ -11,7 +9,7 @@ interface NewsListItemProps {
     publishedDate: string;
 }
 
-const NewsListItem = (props: NewsListItemProps) => {
+export const NewsListItem = (props: NewsListItemProps) => {
     return (
         <Link to={props.url}>
             <div className={cn.newsCardWrapper}>
@@ -22,5 +20,3 @@ const NewsListItem = (props: NewsListItemProps) => {
         </Link>
     );
 };
-
-export default NewsListItem;

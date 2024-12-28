@@ -6,7 +6,7 @@ interface ModalProps {
     children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
+export const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
     if (!show) {
         return null;
     }
@@ -20,5 +20,3 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
         </div>
     );
 };
-
-export default Modal;
