@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
 import NewsListItem from "../../NewsListItem/NewsListItem";
 import classnames from './InfiniteNewsFetch.module.scss';
 
@@ -52,6 +52,7 @@ const InfiniteScrollComponent: React.FC = () => {
             console.log(dataArray);
             setData(prevData => [...dataArray, ...prevData]);
         }
+        console.log('fired once')
     }, []);
 
     useEffect(() => {

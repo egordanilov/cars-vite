@@ -6,7 +6,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
     const [articleTitle, setArticleTitle] = useState<string>("");
     const [articleText, setArticleText] = useState<string>("");
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | undefined>(undefined);
 
     const [successfullySaved, setSuccessfullySaved] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
             setSelectedFile(fileUploaded);
             const reader = new FileReader();
             reader.onload = () => {
-                setPreviewUrl(null);
+                setPreviewUrl(undefined);
                 setPreviewUrl(reader.result as string);
             };
             reader.readAsDataURL(fileUploaded);
@@ -35,7 +35,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
 
     const removeImageHandler = () => {
         setSelectedFile(null);
-        setPreviewUrl(null);
+        setPreviewUrl(undefined);
     }
 
     function saveObject(data: any) {
@@ -72,7 +72,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
         setArticleTitle("");
         setArticleText("");
         setSelectedFile(null);
-        setPreviewUrl(null);
+        setPreviewUrl(undefined);
         closeModal();
     }
 
@@ -121,7 +121,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
                     )}
                     <button className={classnames.publish_button}
                             disabled={!(articleTitle && articleText && selectedFile && previewUrl)}
-                            onClick={(e) => handleSubmit(articleTitle, articleText, previewUrl)}>Опубликовать новость
+                            onClick={(e) => handleSubmit(articleTitle, articleText, previewUrl || "")}>Опубликовать новость
                     </button>
                 </>
             )}
