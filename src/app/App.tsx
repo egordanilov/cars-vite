@@ -1,11 +1,9 @@
-import React, { Suspense } from 'react';
+import  { Suspense } from 'react';
 import { Route, Routes} from 'react-router';
 import './styles/index.scss';
-import { ArticlePageAsync } from "./pages/ArticlePage/ArticlePage.async";
-import {MainPageAsync} from "./pages/MainPage/MainPage.async";
 import {useTheme} from "./theme/useTheme";
-import {Header} from "./shared/Header/Header";
-import NewsPathSegment from './pages/NewsPathSegment/NewsPathSegment';
+import {ArticlePageAsync, MainPageAsync} from "../pages/";
+import {Header} from "../shared";
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
@@ -17,7 +15,6 @@ const App = () => {
           <Routes>
             <Route path={'/'} element={<MainPageAsync/>}/>
             <Route path={'*'} element={<ArticlePageAsync/>}/>
-            <Route path={'/newPath/:segment'} element={<NewsPathSegment />} />
           </Routes>
         </Suspense>
       </main>

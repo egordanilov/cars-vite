@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { useParams } from "react-router";
-import HTMLRenderer from "../../NewsListItem/HTMLRenderer/HTMLRenderer";
+import HTMLRenderer from "../../shared/HTMLRenderer/HTMLRenderer";
 import {FormattedDate} from "../../shared/FormattedDate/FormattedDate";
 import cn from './ArticlePage.module.scss';
 

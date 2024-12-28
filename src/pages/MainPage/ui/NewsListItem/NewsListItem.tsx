@@ -1,8 +1,8 @@
 import cn from './NewsListItem.module.scss';
-import {dateFormatter} from "../shared/FormattedDate/utils/dateFormatter";
+import {dateFormatter} from "../../../../shared/utils/dateFormatter";
 import {Link} from "react-router";
 import {trimString} from "./utils/trimUrlString";
-import {FormattedDate} from "../shared/FormattedDate/FormattedDate";
+import {FormattedDate} from "../../../../shared/FormattedDate/FormattedDate";
 
 interface NewsListItemProps {
     title: string;

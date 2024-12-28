@@ -1,5 +1,5 @@
 import cn from "./FormattedDate.module.scss";
-import {dateFormatter} from "./utils/dateFormatter";
+import {dateFormatter} from "../utils/dateFormatter";
 
 export const FormattedDate = ({date}: {date: string}) => {
     return (

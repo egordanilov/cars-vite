@@ -1,5 +1,5 @@
 import  { useState, useEffect, useCallback } from 'react';
-import NewsListItem from "../../NewsListItem/NewsListItem";
+import NewsListItem from "../../pages/MainPage/ui/NewsListItem/NewsListItem";
 import classnames from './InfiniteNewsFetch.module.scss';
 
 interface IItem {
