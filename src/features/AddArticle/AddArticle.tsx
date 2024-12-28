@@ -2,7 +2,7 @@ import classnames from "./AddArticle.module.scss";
 import {useRef, useState} from "react";
 import {getCurrentDateTime} from "@/shared";
 // @ts-ignore
-import type {IArticleFromSubmit} from "@/entities";
+import {publishArticle} from "@/entities";
 
 
 export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
@@ -41,17 +41,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
         setPreviewUrl(undefined);
     }
 
-    function saveObject(data: IArticleFromSubmit) {
-        // Retrieve the existing array from localStorage
-        let storedData = localStorage.getItem('myDataArray');
-        let dataArray = storedData ? JSON.parse(storedData) : [];
 
-        // Add the new object to the array
-        dataArray.push(data);
-
-        // Store the updated array back in localStorage
-        localStorage.setItem('myDataArray', JSON.stringify(dataArray));
-    }
 
     const handleSubmit =  (title: string, text: string, titleImageUrl: string) => {
             const newArticle = {
@@ -65,8 +55,7 @@ export const AddArticle = ({closeModal}: {closeModal: () => void}) => {
                 fullUrl: "https://www.autodoc.ru/novosti-kompanii/20200",
                 categoryType: "Новости компании"
             }
-            console.log(newArticle);
-            saveObject(newArticle);
+            publishArticle(newArticle);
             setSuccessfullySaved(true);
     }
 

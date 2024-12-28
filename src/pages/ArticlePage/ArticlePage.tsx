@@ -9,14 +9,13 @@ import {fetchArticle} from "@/entities";
 const ArticlePage = () => {
 
     let params = useParams();
-// params["*"] will contain the remaining URL after files/
-    let filePath = params["*"];
+    let urlPath = params["*"];
 
     const { segment, newsUrl } = useParams<{ segment: string, newsUrl: string }>();
     const [data, setData] = useState<{ title: string; publishedDate: string; titleImageUrl: string; text: string } | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + filePath;
+    let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + urlPath;
 
     useEffect(() => {
         fetchArticle(fullFetchUrl)
