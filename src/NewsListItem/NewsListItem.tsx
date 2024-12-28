@@ -13,7 +13,7 @@ interface NewsListItemProps {
 
 const NewsListItem = (props: NewsListItemProps) => {
     return (
-        <Link to={trimString(props.url)} state={props}>
+        <Link to={props.url}>
             <div className={cn.newsCardWrapper}>
                 <img src={props.titleImageUrl} alt={props.title} className={cn.image}/>
                 <FormattedDate date={props.publishedDate} />

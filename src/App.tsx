@@ -5,6 +5,7 @@ import { ArticlePageAsync } from "./pages/ArticlePage/ArticlePage.async";
 import {MainPageAsync} from "./pages/MainPage/MainPage.async";
 import {useTheme} from "./theme/useTheme";
 import {Header} from "./shared/Header/Header";
+import NewsPathSegment from './pages/NewsPathSegment/NewsPathSegment';
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
@@ -15,7 +16,8 @@ const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path={'/'} element={<MainPageAsync/>}/>
-            <Route path={'/:newsUrl'} element={<ArticlePageAsync/>}/>
+            <Route path={'*'} element={<ArticlePageAsync/>}/>
+            <Route path={'/newPath/:segment'} element={<NewsPathSegment />} />
           </Routes>
         </Suspense>
       </main>

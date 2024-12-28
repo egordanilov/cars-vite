@@ -1,18 +1,27 @@
 import {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router";
+import { useParams } from "react-router";
 import HTMLRenderer from "../../NewsListItem/HTMLRenderer/HTMLRenderer";
 import {FormattedDate} from "../../shared/FormattedDate/FormattedDate";
 import cn from './ArticlePage.module.scss';
 
 const ArticlePage = () => {
-    const {  newsUrl } = useParams<{ newsUrl: string }>();
+
+    let params = useParams();
+// params["*"] will contain the remaining URL after files/
+    let filePath = params["*"];
+
+    const { segment, newsUrl } = useParams<{ segment: string, newsUrl: string }>();
     const [data, setData] = useState<{ title: string; publishedDate: string; titleImageUrl: string; text: string } | null>(null);
     const [error, setError] = useState(null);
 
-    let location = useLocation();
-    let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + JSON.parse(JSON.stringify(location.state)).url
+    let fullFetchUrl = `https://webapi.autodoc.ru/api/news/item/` + filePath;
+
 
     useEffect(() => {
+
+
+
+
         fetch(fullFetchUrl)
             .then(response => {
                 if (!response.ok) {
@@ -26,7 +35,7 @@ const ArticlePage = () => {
             .catch(error => {
                 setError(error.toString());
             });
-    }, [fullFetchUrl]);
+    }, [segment, newsUrl]);
 
     return <div className={cn.wrapper}>
         {error && <p>Error: {error}</p>}
