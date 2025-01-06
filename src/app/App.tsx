@@ -3,7 +3,7 @@ import { Route, Routes} from 'react-router';
 import './styles/index.scss';
 import {useTheme} from "./theme/useTheme";
 
-import {Header} from "@/shared";
+import {Header} from "@/widgets";
 // @ts-ignore
 import {MainPageAsync, ArticlePageAsync} from '@/pages';
 

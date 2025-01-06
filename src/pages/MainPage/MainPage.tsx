@@ -1,7 +1,8 @@
 import {useState} from 'react';
 
 import {AddArticle, InfiniteNewsFetch} from "@/features";
-import {Modal, OpenModalButton} from "@/shared";
+import { OpenModalButton} from "@/shared";
+import { Modal } from '@/widgets';
 
 const MainPage = () => {
     const [showModal, setShowModal] = useState(false);
